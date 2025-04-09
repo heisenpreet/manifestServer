@@ -1,62 +1,126 @@
 const express = require("express");
-const cors=require("cors");
-
+const cors = require("cors");
 
 const app = express();
-app.use(cors())
-const manifest = {
-  short_name: "ibankey",
-  name: "ibankey Borrower",
-  icons: [
-    {
-      src: "http://localhost:5173/borrower/src/assets/icons/ibankey-logo-2.svg",
-      sizes: "48x48",
-      type: "image/x-icon",
-    },
-    {
-      src: "http://localhost:5173/borrower/src/assets/icons/ibankey-logo-2.svg",
-      sizes: "144x144",
-      type: "image/png",
-      purpose: "any",
-    },
-  ],
-  screenshots: [
-    {
-      src: "http://localhost:5173/borrower/src/assets/icons/ibankey-logo-2.svg",
-      sizes: "1891x1150",
-      type: "image/webp",
-      form_factor: "wide",
-      label: "ibankey Borrower",
-    },
-    {
-      src: "http://localhost:5173/borrower/src/assets/icons/ibankey-logo-2.svg",
-      sizes: "451x992",
-      type: "image/webp",
-      form_factor: "narrow",
-      label: "ibankey Borrower",
-    },
-  ],
-  start_url: "http://localhost:5173/borrower",
-  display: "standalone",
-  theme_color: "#000000",
-  id: "http://localhost:5173/borrower",
-  background_color: "#ffffff",
-  shortcuts: [
-    {
-      name: "Home",
-      short_name: "Home",
-      description: "Homepage",
-      url: "http://localhost:5173/borrower/#/landing",
-      icons: [{ src: "http://localhost:5173/borrower/src/assets/icons/ibankey-logo-2.svg", sizes: "144x144" }],
-    },
-  ],
-  description:
-    "ibankey Borrower application-We connect you to the right lenders/investors and arrange the best offers for you using technology, cutting down the time by 1/5th.",
-};
+app.use(cors());
+app.get("/lender", (req, res) => {
+  let fullUrl = req.get("referer") + "lender";
+  const manifest = {
+    short_name: "ibankey",
+    name: "ibankey Lender",
+    icons: [
+      {
+        src: fullUrl + "/src/assets/icons/logo.ico",
+        sizes: "48x48",
+        type: "image/x-icon",
+      },
+      {
+        src: fullUrl + "/src/assets/icons/logo.png",
+        sizes: "144x144",
+        type: "image/png",
+        purpose: "any",
+      },
+    ],
+    screenshots: [
+      {
+        src: fullUrl + "/src/assets/icons/logo.png",
+        sizes: "1891x1150",
 
-app.get("/", (req, res) => {
+        type: "image/png",
+        form_factor: "wide",
+        label: "ibankey Lender",
+      },
+      {
+        src: fullUrl + "/src/assets/icons/logo.png",
+        sizes: "451x992",
 
-  res.setHeader('Content-Type', 'application/json');
-  res.json(manifest)
+        type: "image/png",
+        form_factor: "narrow",
+        label: "ibankey Lender",
+      },
+    ],
+    start_url: fullUrl,
+    display: "standalone",
+    theme_color: "#000000",
+    id: fullUrl,
+    background_color: "#ffffff",
+    shortcuts: [
+      {
+        name: "Home",
+        short_name: "Home",
+        description: "Homepage",
+        url: fullUrl + "/#/landing",
+        icons: [
+          { src: fullUrl + "/src/assets/icons/logo.png", sizes: "144x144" },
+        ],
+      },
+    ],
+    description:
+      "ibankey Lender application-We connect you to the right lenders/investors and arrange the best offers for you using technology, cutting down the time by 1/5th.",
+  };
+
+  console.log(fullUrl);
+  res.setHeader("Content-Type", "application/json");
+  res.json(manifest);
+});
+app.get("/borrower", (req, res) => {
+  let fullUrl = req.get("referer") + "borrower";
+  const manifest = {
+    short_name: "ibankey",
+    name: "ibankey Borrower",
+    icons: [
+      {
+        src: fullUrl + "/src/assets/icons/logo.ico",
+        sizes: "48x48",
+        type: "image/x-icon",
+      },
+      {
+        src: fullUrl + "/src/assets/icons/logo.png",
+        sizes: "144x144",
+        type: "image/png",
+        purpose: "any",
+      },
+    ],
+    screenshots: [
+      {
+        src: fullUrl + "/src/assets/icons/logo.png",
+        sizes: "1891x1150",
+
+        type: "image/png",
+        form_factor: "wide",
+        label: "ibankey Borrower",
+      },
+      {
+        src: fullUrl + "/src/assets/icons/logo.png",
+        sizes: "451x992",
+
+        type: "image/png",
+        form_factor: "narrow",
+        label: "ibankey Borrower",
+      },
+    ],
+    start_url: fullUrl,
+    display: "standalone",
+    theme_color: "#000000",
+    id: fullUrl,
+    background_color: "#ffffff",
+    shortcuts: [
+      {
+        name: "Home",
+        short_name: "Home",
+        description: "Homepage",
+        url: fullUrl + "/#/landing",
+        icons: [
+          { src: fullUrl + "/src/assets/icons/logo.png", sizes: "144x144" },
+        ],
+      },
+    ],
+    description:
+      "ibankey Borrower application-We connect you to the right Borrowers/investors and arrange the best offers for you using technology, cutting down the time by 1/5th.",
+  };
+
+  console.log(fullUrl);
+  res.setHeader("Content-Type", "application/json");
+  res.json(manifest);
 });
 app.listen(3000, () => console.log("RUNNING IT ON 3000🚀🚀"));
