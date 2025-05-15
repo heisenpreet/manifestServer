@@ -25,24 +25,7 @@ app.get("/lender", (req, res) => {
         purpose: "any",
       },
     ],
-    screenshots: [
-      {
-        src: apiURL + "/logo.png",
-        sizes: "1891x1150",
-
-        type: "image/png",
-        form_factor: "wide",
-        label: "ibankey Lender",
-      },
-      {
-        src: apiURL + "/logo.png",
-        sizes: "451x992",
-
-        type: "image/png",
-        form_factor: "narrow",
-        label: "ibankey Lender",
-      },
-    ],
+    screenshots: [],
     start_url: fullUrl,
     display: "standalone",
     theme_color: "#000000",
@@ -89,24 +72,7 @@ app.get("/borrower", (req, res) => {
         purpose: "any",
       },
     ],
-    screenshots: [
-      {
-        src: apiURL + "/logo.png",
-        sizes: "1891x1150",
-
-        type: "image/png",
-        form_factor: "wide",
-        label: "ibankey Borrower",
-      },
-      {
-        src: apiURL + "/logo.png",
-        sizes: "451x992",
-
-        type: "image/png",
-        form_factor: "narrow",
-        label: "ibankey Borrower",
-      },
-    ],
+    screenshots: [],
     start_url: fullUrl,
     display: "standalone",
     theme_color: "#000000",
@@ -143,4 +109,4 @@ app.post("/sendmail", async (req, res) => {
     return (res.status = 500);
   }
 });
-app.listen(8000, () => console.log("RUNNING IT ON 3000🚀🚀"));
+app.listen(8000, () => console.log("RUNNING IT ON 8000🚀🚀"));
