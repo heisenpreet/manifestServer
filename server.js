@@ -11,7 +11,7 @@ app.get("/lender", (req, res) => {
   const apiURL = req.protocol + "://" + req.get("host");
   const manifest = {
     short_name: "ibankey",
-    name: "ibankey Lender",
+    name: "ibankey Lender - Your key to the world of finance.",
     icons: [
       {
         src: apiURL + "/logo.ico",
@@ -58,7 +58,7 @@ app.get("/borrower", (req, res) => {
   const apiURL = req.protocol + "://" + req.get("host");
   const manifest = {
     short_name: "ibankey",
-    name: "ibankey Borrower",
+    name: "ibankey Borrower  - Your key to the world of finance.",
     icons: [
       {
         src: apiURL + "/logo.ico",
